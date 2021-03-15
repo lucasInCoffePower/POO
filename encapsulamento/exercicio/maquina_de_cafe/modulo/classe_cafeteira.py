@@ -5,17 +5,17 @@
 
 class Cafeteira:
     """
-        Abstrai as características e comportamentos de uma cafeteira
+        Abstrai as características e o comportamento de uma cafeteira
     """
 
-    def __init__(self, valor_cafe=0.50):
+    def __init__(self, valor_cafe = 0.50):
         """
             Construtor da cafeteira
             Recebe um tipo float para valor_cafe : valor do cafe
         """
         self._valor_cafe = valor_cafe  # preço do café
         self._valor_total = 0.0  # total de dinheiro na máquina
-        self._troco = 0.0
+        self._troco = False  # troco do usuário
         self._status = False  # status de disponibilidade de café na máquina
 
     def __str__(self):
@@ -34,6 +34,22 @@ class Cafeteira:
             Troco: {self._troco}
             '''
 
+    @property
+    def valor_cafe(self):
+        """
+            Método que mostra o valor do cafe
+            Retorna um tipo str: valor do café
+        """
+        return f"R$ {self._valor_cafe}"
+
+    @valor_cafe.setter
+    def valor_cafe(self, valor):
+        """
+            Método que altera o valor do café
+            Recebe um tipo float para valor: novo valor do café
+        """
+        self._valor_cafe = valor
+
     def _conferir_valor(self):
         """
             Método que confere se o valor na máquina não é maior que o do café
@@ -41,16 +57,18 @@ class Cafeteira:
         self._status = True if self._valor_total >= self._valor_cafe
         return self._status
 
-    def cinco(self, valor = 0.5):
+    def cinco(self, valor = 0.05):
         """
             Método que simula a entrada de uma moeda de 5 centavos
         """
         if not(self._conferir_valor()):
             self._valor_total += valor
-            return True
+            return f"Valor depositado: R$ {self._valor_total}"
         else:
-            return False
-
+            return f"""
+            Valor depositado: R$ {self._valor_total}
+            Não aceitamos mais depósitos
+            """
 
     def dez(self, valor = 0.10):
         """
@@ -79,4 +97,16 @@ class Cafeteira:
             Retorna um tipo float:
         """
         return self._troco
+
+    def retirar_cafe(self):
+        """
+            Método que simula a função de retirar café
+            Retorna uma string indicando a retirada do café
+        """
+        if self._status:
+            return "Café retirado"
+        else:
+            return "Sem Café para retirar"
+
+
 
