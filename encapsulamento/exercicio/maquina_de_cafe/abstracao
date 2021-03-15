@@ -1,0 +1,31 @@
+Atividade
+    Uma máquina de café aceita moedas de 5 e 10 centavos. Um café custa X reais.
+    Implemente uma classe que simule a operação da máquina de café.
+    A classe deve oferecer métodos para saber se o café está disponível e se houver troco.
+    Por exemplo, se  𝑋=50  centavos, a máquina funcionaria como a seguir:
+
+    10 c. (faltam 40 c)
+    10 c. (faltam 30 c)
+    5 c. (faltam 25 c)
+    10 c. (faltam 15 c)
+    5 c. (faltam 10 c)
+    5 c. (faltam 5 c)
+    10 c. Troco: 5 c.
+    Café disponível!!
+
+
+Abstração--
+    Comportamento:
+       Efetuar operações
+            (Módulos) Subtração e adição
+       Status:
+           (módulo) Café_disponível (bool)
+       Troco:
+           (módulo) tem_troco (bool)
+           (modulo) troco (float)
+
+    Características:
+        Armazenar valor
+            (atributo privado) valor_armazenado -> float
+            (atributo privado) valor_cafe -> float
+
